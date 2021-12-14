@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home.home');
 })->name('home');
+
+Route::get('login-register',function (){
+    return view('auth.login-register');
+})->name('login-register');
