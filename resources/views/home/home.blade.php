@@ -158,6 +158,7 @@
 
     </div>
 </section>
+@include('components.flash-message')
 <!-- =============== END OF SUBSCRIBE SECTION =============== -->
 
 @endsection

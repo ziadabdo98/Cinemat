@@ -10,15 +10,15 @@
         <!-- ====== Start of Navbar ====== -->
         <nav class="navbar navbar-expand-lg">
 
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{ route('home') }}">
                 <!-- INSERT YOUR LOGO HERE -->
-                <img src={{  asset('images/branding/logos/logo-bt.png')  }} alt="logo" width="200" class="logo">
+                <img src="{{ asset('images/branding/logos/logo-bt.png') }}" alt="logo" width="200" class="logo">
                 <!-- INSERT YOUR WHITE LOGO HERE -->
-                <img src={{  asset('images/branding/logos/logo-w.png')  }} alt="white logo" width="200" class="logo-white">
+                <img src="{{ asset('images/branding/logos/logo-w.png') }}" alt="white logo" width="200" class="logo-white">
             </a>
 
             <!-- Login Button on Responsive -->
-            <a href="#login-register-popup" class="login-mobile-btn popup-with-zoom-anim"><i class="icon-user"></i></a>
+            <a href="{{ route('login') }}" class="login-mobile-btn popup-with-zoom-anim"><i class="icon-user"></i></a>
 
             <button id="mobile-nav-toggler" class="hamburger hamburger--collapse" type="button">
                     <span class="hamburger-box">
@@ -59,18 +59,27 @@
                 <ul class="navbar-nav extra-nav">
 
                     <!-- Menu Item -->
-                    <li class="nav-item notification-wrapper">
-                        <a class="nav-link notification" href="#">
-                            <i class="fa fa-ticket"></i>
-                            <span class="notification-count">2</span>
-                        </a>
-                    </li>
+                    @auth
+                        <li class="nav-item notification-wrapper">
+                            <a class="nav-link notification" href="#">
+                                <i class="fa fa-ticket"></i>
+                                <span class="notification-count">2</span>
+                            </a>
+                        </li>
+                    @endauth
 
-                    <!-- Menu Item -->
-                    <li class="nav-item">
-                        <a href={{  route('login-register')  }} class="btn btn-main btn-effect login-btn">
+                    @auth
+                        <li class="nav-item">
+                            <a href="{{  route('login')  }}" class="btn btn-main btn-effect login-btn">
+                            <i class="icon-user"></i>Hello, {{ auth()->user()->first_name }}</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="{{  route('login')  }}" class="btn btn-main btn-effect login-btn">
                             <i class="icon-user"></i>login</a>
-                    </li>
+                        </li>
+                    @endauth
+
                 </ul>
                 <!-- ====== End of Extra Nav ====== -->
 

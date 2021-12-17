@@ -23,7 +23,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->optional()->lastName(),
-            'role_id'=> Role::all()->collect()->random(),
+            'role_id' => Role::all()->collect()->random(),
         ];
     }
 

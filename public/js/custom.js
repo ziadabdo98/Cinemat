@@ -1,19 +1,18 @@
 /**********************
 
-Custom.js
-=============
+ Custom.js
+ =============
 
-Author:  Gino Aliaj
-Template: Movify - Movies, Series & Cinema HTML Template
-Version: 1.0
+ Author:  Gino Aliaj
+ Template: Movify - Movies, Series & Cinema HTML Template
+ Version: 1.0
 
-Author URI: gnodesign.com
-***************************/
+ Author URI: gnodesign.com
+ ***************************/
 
 
 (function ($) {
     "use strict";
-
 
 
     /*----------------------------------------------------
@@ -25,9 +24,9 @@ Author URI: gnodesign.com
     }); // end of window load function
 
 
-
-
     $(document).ready(function () {
+
+        $('.flash-message').delay(5000).fadeOut();
 
         /*----------------------------------------------------
           STICKY HEADER
@@ -57,8 +56,6 @@ Author URI: gnodesign.com
             });
 
         }
-
-
 
 
         /*----------------------------------------------------
@@ -114,8 +111,6 @@ Author URI: gnodesign.com
         }
 
 
-
-
         /*----------------------------------------------------
            BUTTON EFFECT
          ----------------------------------------------------*/
@@ -158,8 +153,6 @@ Author URI: gnodesign.com
         });
 
 
-
-
         /*----------------------------------------------------
            BACK TO TOP
          ----------------------------------------------------*/
@@ -182,8 +175,6 @@ Author URI: gnodesign.com
         });
 
 
-
-
         /*----------------------------------------------------
           GENERAL SEARCH FORM
         ----------------------------------------------------*/
@@ -198,8 +189,6 @@ Author URI: gnodesign.com
         search_close.on('click', function () {
             general_searchform.removeClass('open');
         });
-
-
 
 
         /*----------------------------------------------------
@@ -223,7 +212,6 @@ Author URI: gnodesign.com
                         sliderLayout: "fullwidth",
                         dottedOverlay: "none",
                         delay: 9000,
-                        spinner: 'off',
                         navigation: {},
                         // viewPort: {
                         //     enable: true,
@@ -265,7 +253,8 @@ Author URI: gnodesign.com
                 //if(revapi24) revapi24.revSliderSlicey();
             });
 
-        };
+        }
+        ;
 
 
         /*----------------------------------------------------
@@ -290,8 +279,6 @@ Author URI: gnodesign.com
             $('.forgetpassword-wrapper, .signup-wrapper').fadeOut(300);
             $('.signin-wrapper').delay(300).fadeIn();
         });
-
-
 
 
         /*----------------------------------------------------
@@ -385,8 +372,6 @@ Author URI: gnodesign.com
 
             fixedContentPos: false
         });
-
-
 
 
         /*----------------------------------------------------
@@ -506,8 +491,6 @@ Author URI: gnodesign.com
         });
 
 
-
-
         /*----------------------------------------------------
           PARALLAX
         ----------------------------------------------------*/
@@ -533,6 +516,7 @@ Author URI: gnodesign.com
                 }
             });
         }
+
         parallaxBG();
 
         if (!$("html").hasClass("touch")) {
@@ -566,6 +550,7 @@ Author URI: gnodesign.com
                 path.css("background-size", imgW + "px " + imgH + "px");
             });
         }
+
         $(window).resize(backgroundResize);
         $(window).focus(backgroundResize);
         backgroundResize();
@@ -610,8 +595,6 @@ Author URI: gnodesign.com
         }
 
 
-
-
         /*----------------------------------------------------
           MAILCHIMP
         ----------------------------------------------------*/
@@ -638,8 +621,6 @@ Author URI: gnodesign.com
         }
 
 
-
-
         /*----------------------------------------------------
           TOOLTIP
         ----------------------------------------------------*/
@@ -647,8 +628,6 @@ Author URI: gnodesign.com
             animated: 'fade',
             container: 'body'
         });
-
-
 
 
         /*----------------------------------------------------
@@ -662,8 +641,6 @@ Author URI: gnodesign.com
                 + '<div><span>%S</span> <i>Seconds</i></div>'
             ));
         });
-
-
 
 
         /*----------------------------------------------------
@@ -754,8 +731,6 @@ Author URI: gnodesign.com
         $("input, textarea").on("change keyup", function (event) {
             $("input, textarea").css('border-color', '');
         });
-
-
 
 
         /*----------------------------------------------------

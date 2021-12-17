@@ -4,7 +4,8 @@
 
 <!-- =============== START OF WRAPPER =============== -->
 <div class="wrapper">
-    <main class="login-register-page" style="background-image: url({{  asset('images/branding/posters/movie-collection.jpg')  }})">
+    <main class="login-register-page"
+          style="background-image: url({{  asset('images/branding/posters/movie-collection.jpg')  }})">
         <div class="container">
 
             <!-- =============== START OF LOGIN & REGISTER POPUP =============== -->
@@ -70,25 +71,57 @@
                     <div class="small-dialog-content">
 
                         <!-- Start of Registration form -->
-                        <form id="registration_form" action="#" method="POST">
+                        <form id="registration_form" action={{ route('register') }} method="POST">
+                            @csrf
+
                             <p class="status"></p>
 
-                            <div class="form-group">
-                                <label for="user_login">Username</label>
-                                <input name="user_login" id="user_login" class="form-control"
-                                       type="text"/>
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <label for="first_name">First Name*</label>
+                                    <input name="first_name" id="first_name" class="form-control"
+                                           type="text" required/>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="last_name">Last Name</label>
+                                    <input name="last_name" id="last_name" class="form-control"
+                                           type="text"/>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="user_email">Email</label>
-                                <input name="user_email" id="user_email" class="form-control"
-                                       type="email"/>
+                                <label for="username">Username*</label>
+                                <input name="username" id="username" class="form-control"
+                                       type="text" required/>
                             </div>
 
                             <div class="form-group">
-                                <label for="password">Password</label>
-                                <input name="user_pass" id="password" class="form-control"
-                                       type="password"/>
+                                <label for="email">Email*</label>
+                                <input name="email" id="email" class="form-control"
+                                       type="email" required/>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <label for="password">Password*</label>
+                                    <input name="password" id="password" class="form-control"
+                                           type="password" required/>
+                                </div>
+
+                                <div class="form-group col-6">
+                                    <label for="password_confirmation">ReEnter Password*</label>
+                                    <input name="password_confirmation" id="password_confirmation" class="form-control"
+                                           type="password" required/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="role_id">Role*</label>
+                                <select name="role_id" id="role_id" required>
+                                    @foreach( $roles as $role)
+                                        <option value={{ $role->id }}>{{ $role->title }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">
