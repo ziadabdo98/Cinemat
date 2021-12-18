@@ -21,9 +21,9 @@
             <a href="{{ route('login') }}" class="login-mobile-btn popup-with-zoom-anim"><i class="icon-user"></i></a>
 
             <button id="mobile-nav-toggler" class="hamburger hamburger--collapse" type="button">
-                    <span class="hamburger-box">
-                        <span class="hamburger-inner"></span>
-                    </span>
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
             </button>
 
             <!-- ====== Start of #main-nav ====== -->
@@ -60,24 +60,32 @@
 
                     <!-- Menu Item -->
                     @auth
-                        <li class="nav-item notification-wrapper">
-                            <a class="nav-link notification" href="#">
-                                <i class="fa fa-ticket"></i>
-                                <span class="notification-count">2</span>
-                            </a>
-                        </li>
+                    <li class="nav-item notification-wrapper">
+                        <a class="nav-link notification" href="#">
+                            <i class="fa fa-ticket"></i>
+                            <span class="notification-count">2</span>
+                        </a>
+                    </li>
                     @endauth
 
                     @auth
-                        <li class="nav-item">
-                            <a href="{{  route('login')  }}" class="btn btn-main btn-effect login-btn">
+                    <li class="nav-item dropdown">
+                        <a href="{{  route('login')  }}" class="btn btn-main btn-effect login-btn">
                             <i class="icon-user"></i>Hello, {{ auth()->user()->first_name }}</a>
-                        </li>
+                        <div class="dropdown-content rounded font-weight-normal">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <form id="logout_form" method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a href="javascript:{}" onclick="document.getElementById('logout_form').submit();">Log Out</a>
+                            </form>
+                        </div>
+                    </li>
                     @else
-                        <li class="nav-item">
-                            <a href="{{  route('login')  }}" class="btn btn-main btn-effect login-btn">
+                    <li class="nav-item">
+                        <a href="{{  route('login')  }}" class="btn btn-main btn-effect login-btn">
                             <i class="icon-user"></i>login</a>
-                        </li>
+                    </li>
                     @endauth
 
                 </ul>

@@ -36,6 +36,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::post('register', [UserController::class, 'store'])->name('register');
+Route::post('logout', [SessionController::class, 'destroy'])->name('logout');
 
 Route::get('/test', function () {
     $wants_manager = false;
