@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LeadController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
 use App\Models\Role;
@@ -36,7 +37,9 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::post('register', [UserController::class, 'store'])->name('register');
-Route::post('logout', [SessionController::class, 'destroy'])->name('logout');
+Route::post('logout', [SessionController::class, 'destroy'])->name('logout')->middleware('auth');
+
+Route::post('leads', [LeadController::class, 'store'])->middleware('guest')->name('leads');
 
 Route::get('/test', function () {
     $wants_manager = false;

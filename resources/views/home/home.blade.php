@@ -139,12 +139,12 @@
             <div class="col-md-7 col-sm-10 col-12">
 
                 <!-- Subscribe Form -->
-                <form action="#" class="mt50" novalidate>
+                <form method="POST" action="{{ route('leads') }}" class="mt50">
                     @csrf
                     <!-- Form -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="email" name="EMAIL" class="form-control" id="email" placeholder="Your Email" autocomplete="off">
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Your Email" autocomplete="off">
                             <label for="email"></label>
                             <button type="submit" class="btn btn-main btn-effect">Subscribe</button>
                         </div>

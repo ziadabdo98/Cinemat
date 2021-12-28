@@ -25,6 +25,7 @@ class SessionController extends Controller
 
     public function destroy()
     {
+        // log user out and redirect
         auth()->logout();
         return redirect('/')->with([
             'flash' => 'success',
