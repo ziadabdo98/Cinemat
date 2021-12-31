@@ -3,7 +3,10 @@
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserMovieController;
+use App\Models\Movie;
 use App\Models\Role;
+use App\Models\Show;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,28 +21,41 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('home.home');
+    $movies = Movie::all()->collect();
+    return view('home.home', [
+        'top4movies' => $movies->sortByDesc('rating')->take(4),
+        'newest_movies' => $movies->sortByDesc('release_date')->take(6),
+    ]);
 })->name('home');
 
 // Login/Register routes
 Route::middleware('guest')->group(function () {
     Route::post('login', [SessionController::class, 'store']);
-    Route::get('login', function () {
-        return view('auth.login');
-    })->name('login');
+    Route::get('login', function () {return view('auth.login');})->name('login');
 
-    Route::post('register', [UserController::class, 'store']);
+    Route::post('register', [UserController::class, 'store'])->name('register');
     Route::get('register', function () {
         return view('auth.register', [
             'roles' => Role::all()->collect()->whereNotIn('code', Role::ADMIN_CODE),
         ]);
     })->name('register');
 });
-
-Route::post('register', [UserController::class, 'store'])->name('register');
 Route::post('logout', [SessionController::class, 'destroy'])->name('logout')->middleware('auth');
 
+// Leads
 Route::post('leads', [LeadController::class, 'store'])->middleware('guest')->name('leads');
+
+// User Movies
+Route::resource('movies', UserMovieController::class, ['only' => [
+    'index', 'show',
+]]);
+
+// User Shows
+Route::get('json/shows/{show}', function (Show $show) {
+    $ret = $show->load('room')->toArray();
+    $ret['reservations'] = $show->reservationsSeats();
+    return $ret;
+});
 
 Route::get('/test', function () {
     $wants_manager = false;

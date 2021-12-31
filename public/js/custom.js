@@ -15,15 +15,6 @@
     "use strict";
 
 
-    /*----------------------------------------------------
-      LOADING PAGE
-    ----------------------------------------------------*/
-    $(window).on('load', function () {
-        var loading = $('.loading');
-        loading.delay(1000).fadeOut(1000);
-    }); // end of window load function
-
-
     $(document).ready(function () {
 
         $('.flash-message').delay(5000).fadeOut();
@@ -363,16 +354,24 @@
 
 
         // Init for youtube, vimeo and google maps
-        $('.play-video, .popup-gmaps').magnificPopup({
+        // $('.play-video, .popup-gmaps').magnificPopup({
+        //     disableOn: 700,
+        //     type: 'iframe',
+        //     mainClass: 'mfp-fade',
+        //     removalDelay: 160,
+        //     preloader: false,
+
+        //     fixedContentPos: false
+        // });
+
+        $('.open-reservation-popup').magnificPopup({
+            src: '#reservation-popup',
+            type: 'inline',
+            midClick: true,
             disableOn: 700,
-            type: 'iframe',
-            mainClass: 'mfp-fade',
             removalDelay: 160,
-            preloader: false,
-
-            fixedContentPos: false
-        });
-
+            mainClass: 'mfp-fade',
+        })
 
         /*----------------------------------------------------
           OWL CAROUSEL
@@ -437,7 +436,6 @@
             margin: 30,
             stagePadding: 20,
             autoplay: true, //change this to true if you want the slider to auto play
-            nav: true,      // TODO: create navigation buttons for this slider
             dots: true,
             responsive: {
                 0: {
@@ -458,6 +456,29 @@
             }
         });
 
+        /***** Recommended Movies & TV Shows *****/
+
+        var recommended = $('section.recommended-movies .recommended-slider');
+
+        recommended.owlCarousel({
+            loop: true,
+            margin: 15,
+            autoplay: false, //change this to true if you want the slider to auto play
+            nav: false,
+            dots: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    stagePadding: 10
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
 
         /***** Testimonials *****/
 

@@ -2,7 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Movie;
+use App\Models\Reservation;
 use App\Models\Role;
+use App\Models\Room;
+use App\Models\Show;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,8 +21,38 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DatabaseSeeder::seedRoles();
-         \App\Models\User::factory(10)->create();
+        $this->seedRoles();
+        $this->seedCategories();
+        $this->seedRooms();
+        User::factory(1)->create([
+            'username' => 'root',
+            'email' => 'test@gmail.com',
+            'password' => '2010',
+        ]);
+        User::factory(50)->create();
+        Movie::factory(50)->create();
+        Show::factory(50)->create();
+        Reservation::factory(25)->create();
+    }
+
+    private function seedRooms()
+    {
+        DB::table('rooms')->delete();
+
+        $default_sizes = [20, 30];
+        foreach ($default_sizes as $size) {
+            Room::create(['size' => $size]);
+        }
+    }
+
+    private function seedCategories()
+    {
+        DB::table('categories')->delete();
+
+        $default_categories = ['Action', 'Drama', 'Comedy', 'Romance', 'Horror'];
+        foreach ($default_categories as $category) {
+            Category::create(['title' => $category]);
+        }
     }
 
     private function seedRoles()

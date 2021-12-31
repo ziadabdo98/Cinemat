@@ -9,10 +9,11 @@
     <div class="container">
         <div class="row">
 
+            @each('components.movie-item-dark',$top4movies ,'movie' )
+            {{-- @include('components.movie-item-dark')
             @include('components.movie-item-dark')
             @include('components.movie-item-dark')
-            @include('components.movie-item-dark')
-            @include('components.movie-item-dark')
+            @include('components.movie-item-dark') --}}
 
         </div>
     </div>
@@ -83,21 +84,16 @@
     <!-- Start of Latest Releases Slider -->
     <div class="owl-carousel latest-releases-slider">
 
-        <div class="item">
+        @each('components.movie-item', $newest_movies, 'movie')
+        {{-- <div class="item">
             @include('components.movie-item')
-        </div>
-        <div class="item">
-            @include('components.movie-item')
-        </div>
-        <div class="item">
-            @include('components.movie-item')
-        </div>
+        </div> --}}
 
     </div>
     <!-- End of Latest Releases Slider -->
 
-    <div class="text-center">
-        <a class="btn btn-main btn-effect" href="#">See All Movies</a>
+    <div class="text-center pt-3">
+        <a class="btn btn-main btn-effect" href="/movie/index">See All Movies</a>
     </div>
 </section>
 <!-- =============== END OF LATEST RELEASES SECTION =============== -->
@@ -111,8 +107,15 @@
         <div class="col-md-6 col-sm-12 bg-white">
             <div class="features-wrapper">
                 <h3 class="title">Watch all newest Movies once they get released!</h3>
+                @guest
                 <p>Sign up or register now to reserve you own tickets. And get notified on new offers and news!</p>
-                <a class="btn btn-main btn-effect" href="#">Register</a>
+                <a class="btn btn-main btn-effect" href="{{ route('register') }}">Register</a>
+                @endguest
+
+                @auth
+                <p>Start reserving your tickets to enjoy the latest and greatest movies!</p>
+                <a class="btn btn-main btn-effect" href="/movie/index">Shows</a>
+                @endauth
             </div>
         </div>
 
@@ -127,13 +130,21 @@
         <!-- Start of row -->
         <div class="row justify-content-center">
             <div class="col-md-7 text-center">
+                @guest
                 <h2 class="title">Join Cinemat Now!</h2>
                 <h6 class="subtitle">Enter your email to be notified about any news and new offers!</h6>
+                @endguest
+
+                @auth
+                <h2 class="title">Thanks For Using {{ config('app.name') }}!</h2>
+                <h6 class="subtitle">We hope you enjoy your experience with us!</h6>
+                @endauth
             </div>
         </div>
         <!-- End of row -->
 
 
+        @guest
         <!-- Start of row -->
         <div class="row justify-content-center">
             <div class="col-md-7 col-sm-10 col-12">
@@ -154,6 +165,7 @@
             </div>
         </div>
         <!-- End of row -->
+        @endguest
 
 
     </div>

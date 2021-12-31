@@ -19,11 +19,7 @@
                 <!-- Rating -->
                 <div class="stars">
                     <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
+                        @include('components.rating-stars',['rating'=>$movie->rating])
                     </div>
                 </div>
 
@@ -34,9 +30,9 @@
             <!-- Movie List Content -->
             <div class="listing-content">
                 <div class="inner">
-                    <h2 class="title">Star Wars</h2>
+                    <h2 class="title">{{ $movie->title }}</h2>
 
-                    <a href="movie-detail.html" class="btn btn-main btn-effect">details</a>
+                    <a href="{{ route('movies.show',$movie->id) }}" class="btn btn-main btn-effect">details</a>
                 </div>
             </div>
 

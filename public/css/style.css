@@ -481,11 +481,6 @@ th {
     text-align: left;
 }
 
-table,
-th,
-td {
-    border: 1px solid #e3e3e3;
-}
 
 th {
     border-width: 0 1px 1px 0;
@@ -555,7 +550,7 @@ footer.entry-footer {
 /* OWl Dots */
 
 .owl-dots {
-    margin-top: 30px;
+    margin-top: 0px;
 }
 
 .owl-nav.disabled + .owl-dots {
@@ -2678,7 +2673,8 @@ ul.social-btns li {
 }
 
 .play-video i {
-    margin-left: 4px;
+    margin-left: 0px;
+    font-size: 1.3rem;
 }
 
 
@@ -3621,7 +3617,7 @@ section.counter h4 {
 /********************** 7.7 Latest Releases ************************/
 
 .latest-releases .owl-stage-outer {
-    padding: 50px 0;
+    padding: 50px 0 35px 0;
 }
 
 
@@ -5475,64 +5471,6 @@ main .col-md-12:last-of-type .movie-list-2 {
     box-shadow: 10px 10px 40px 0 rgba(52, 58, 64, 0.25);
 }
 
-.movie-detail-intro2 .movie-poster:before {
-    content: "";
-    position: absolute;
-    display: block;
-    height: 100%;
-    width: 100%;
-    bottom: 0;
-    z-index: 8;
-    opacity: 0;
-    -webkit-transition: all .6s ease;
-    -moz-transition: all .6s ease;
-    -ms-transition: all .6s ease;
-    -o-transition: all .6s ease;
-    transition: all .6s ease;
-}
-
-.movie-detail-intro2 .movie-poster:hover:before {
-    opacity: .5;
-}
-
-.movie-detail-intro2 .movie-poster .play-video {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -30px 0 0 -30px;
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    -ms-transform: scale(0);
-    -o-transform: scale(0);
-    transform: scale(0);
-}
-
-.movie-detail-intro2 .movie-poster:hover .play-video {
-    opacity: 1;
-    visibility: visible;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-    -webkit-box-shadow: 0 0 0 10px rgba(147, 82, 179, 0);
-    -moz-box-shadow: 0 0 0 10px rgba(147, 82, 179, 0);
-    box-shadow: 0 0 0 10px rgba(147, 82, 179, 0);
-}
-
-.movie-detail-intro2 .movie-poster:hover .play-video:hover {
-    -webkit-transform: scale(1.05);
-    -moz-transform: scale(1.05);
-    -ms-transform: scale(1.05);
-    -o-transform: scale(1.05);
-    transform: scale(1.05);
-    -webkit-box-shadow: 0 0 0 10px rgba(147, 82, 179, .4);
-    -moz-box-shadow: 0 0 0 10px rgba(147, 82, 179, .4);
-    box-shadow: 0 0 0 10px rgba(147, 82, 179, .4);
-}
-
 .movie-detail-intro2 .movie-details {
     float: left;
     margin-top: 50px;
@@ -5919,3 +5857,113 @@ main .col-md-12:last-of-type .movie-list-2 {
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
+
+/* Reservation popup css */
+.reservation-container * {
+  box-sizing: border-box;
+}
+
+.reservation-container {
+  background-color: #242333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  border-radius: 2rem;
+  max-width: 1000px;
+}
+
+.reservation-container > .cinema-container {
+  perspective: 1000px;
+  margin-bottom: 30px;
+  width: 45%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.seat {
+  background-color: #444451;
+  height: 26px;
+  width: 32px;
+  margin: 3px;
+  font-size: 50px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.seat.selected {
+  background-color: green;
+}
+
+.seat.sold {
+  background-color: #fff;
+}
+
+.seat:nth-of-type(1) {
+  margin-right: 18px;
+}
+
+.seat:nth-last-of-type(1) {
+  margin-left: 18px;
+}
+
+.seat:not(.sold):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.sold):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
+.showcase {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  width: 45%;
+}
+
+.showcase li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+.showcase li small {
+  margin-left: 2px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.screen {
+  background-color: #fff;
+  height: 120px;
+  width: 100%;
+  margin: 15px 0;
+  transform: rotateX(-48deg);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+}
+
+.reservation-text{
+    margin: 5px 0;
+}
+
+.reservation-text span{
+    color: rgb(158, 248, 158);
+}
+
+.reservation-movie-details {
+    width: 45%;
+}

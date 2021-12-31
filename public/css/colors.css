@@ -35,6 +35,10 @@ a:hover,
     color: #9352b3;
 }
 
+.main-bg {
+    background: #9352b3;
+}
+
 
 /* Background */
 .owl-dots .owl-dot.active span,

@@ -11,7 +11,6 @@ use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
-    //
     public function store()
     {
         $roles = Role::all()->collect();
