@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\WelcomeMail;
 use App\Models\Role;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
@@ -46,4 +47,13 @@ class UserController extends Controller
         ]);
     }
 
+    public function dashboard()
+    {
+        // get the user with the reservations and shows for each reservation
+        $user = User::with(['reservations.show.movie'])->find(auth()->id());
+        return view('user.user-dashboard', [
+            'user' => $user,
+            'reservations' => $user->reservations->where('show.date_time', '>', Carbon::now()),
+        ]);
+    }
 }

@@ -82,7 +82,7 @@
                                 <th>{{ $show->date_time->toDayDateTimeString() }}</th>
                                 <td>{{ $show->price." ".config('app.currency') }}</td>
                                 <td>{{ $show->remaining_seats.'/'.$show->room->size }}</td>
-                                <td><a href="#reservation-popup" class="btn btn-second btn-effect open-reservation-popup" onclick="populateUI({{ $show->id.',\''.$show->date_time->toDayDateTimeString().'\','.$show->price }})">Reserve</a></td>
+                                <td><a href="#reservation-popup" class="btn btn-second btn-effect open-reservation-popup" onclick="populateUI({{ $show->id.',\''.$show->date_time->toDayDateTimeString().'\','.$show->price.','.(auth()->check()?'true':'false') }})">Reserve</a></td>
                             </tr>
                             @endforeach
                         </table>

@@ -5875,10 +5875,10 @@ main .col-md-12:last-of-type .movie-list-2 {
   max-width: 1000px;
 }
 
-.reservation-container > .cinema-container {
+.cinema-container {
   perspective: 1000px;
   margin-bottom: 30px;
-  width: 45%;
+  width: 100%;
   padding-left: 15px;
   padding-right: 15px;
   margin-left: auto;
@@ -5929,7 +5929,7 @@ main .col-md-12:last-of-type .movie-list-2 {
   list-style-type: none;
   display: flex;
   justify-content: space-between;
-  width: 45%;
+  width: 100%;
 }
 
 .showcase li {

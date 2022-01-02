@@ -4,7 +4,7 @@
 
 <!-- =============== START OF HEADER NAVIGATION =============== -->
 <!-- Insert the class "sticky" in the header if you want a sticky header -->
-<header class="header header-fixed text-black">
+<header class="header text-black">
     <div class="container-fluid">
 
         <!-- ====== Start of Navbar ====== -->
@@ -61,20 +61,20 @@
                     <!-- Menu Item -->
                     @auth
                     <li class="nav-item notification-wrapper">
-                        <a class="nav-link notification" href="#">
+                        <a class="nav-link notification" href="{{ route('dashboard') }}">
                             <i class="fa fa-ticket"></i>
-                            <span class="notification-count">2</span>
+                            <span class="notification-count">{{ auth()->user()->reservations->count() }}</span>
                         </a>
                     </li>
                     @endauth
 
                     @auth
                     <li class="nav-item dropdown">
-                        <a href="{{  route('login')  }}" class="btn btn-main btn-effect login-btn">
+                        <a href="{{ route('dashboard') }}" class="btn btn-main btn-effect login-btn">
                             <i class="icon-user"></i>Hello, {{ auth()->user()->first_name }}</a>
                         <div class="dropdown-content rounded font-weight-normal">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
+                            <a href="{{ route('dashboard') }}">My Account</a>
+                            <a href="{{ route('dashboard') }}">My Reservations</a>
                             <form id="logout_form" method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a href="javascript:{}" onclick="document.getElementById('logout_form').submit();">Log Out</a>

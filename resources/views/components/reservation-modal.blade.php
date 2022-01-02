@@ -1,34 +1,29 @@
-<div id="reservation-popup" class="reservation-container reservation-popup mfp-hide">
+<div id="reservation-popup" class="reservation-container reservation-popup mfp-hide p-3">
+    <form id="reservation-form" action="">
+        @csrf
 
-    <div class="reservation-movie-details pt-2 pb-2">
-        <div>Movie: <strong id="movie-title" class="font-weight-bold">{{ $movie->title }}</strong></div>
-        <div>Date: <strong id="show-date" class="font-weight-bold"></strong></div>
-        <div>Price: <strong class="font-weight-bold"><strong id="show-price"></strong> {{ config('app.currency') }}</strong></div>
-    </div>
-
-    <ul class="showcase">
-        <li>
-            <div class="seat"></div>
-            <small>Available</small>
-        </li>
-        <li>
-            <div class="seat selected"></div>
-            <small>Selected</small>
-        </li>
-        <li>
-            <div class="seat sold"></div>
-            <small>Sold</small>
-        </li>
-    </ul>
-    <div class="container cinema-container">
-        <div class="screen"></div>
-        <div class="seats-container">
-
+        <!-- One "tab" for each step in the form: -->
+        <div class="tab">
+            <h2>Reserve seats</h2>
+            @include('components.cinema-view')
         </div>
-    </div>
 
-    <p class="reservation-text">
-        You have selected <span id="seats-count">0</span> seat for a price of <span id="total-price">0</span> {{ config('app.currency') }}
-    </p>
+        @auth
+        <div class="tab" style="display: none">
+            <h2>Payment details</h2>
+            @include('components.payment-view')
+        </div>
+        @endauth
+
+
+        <div style="overflow:auto;">
+            <div style="float:right;" class="mt-3">
+                <button type="button" id="prevBtn" class="btn btn-red" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" class="btn btn-green" onclick="nextPrev(1)">Next</button>
+            </div>
+        </div>
+
+    </form>
 </div>
+
 <script src="{{ asset('js/reservations-popup.js') }}"></script>

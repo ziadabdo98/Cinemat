@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserMovieController;
@@ -56,6 +57,12 @@ Route::get('json/shows/{show}', function (Show $show) {
     $ret['reservations'] = $show->reservationsSeats();
     return $ret;
 });
+
+// Reservations
+Route::resource('reservations', ReservationController::class)->middleware('auth');
+
+// Dashboard
+Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 
 Route::get('/test', function () {
     $wants_manager = false;

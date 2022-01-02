@@ -8,13 +8,7 @@
 <section class="top-movies2">
     <div class="container">
         <div class="row">
-
             @each('components.movie-item-dark',$top4movies ,'movie' )
-            {{-- @include('components.movie-item-dark')
-            @include('components.movie-item-dark')
-            @include('components.movie-item-dark')
-            @include('components.movie-item-dark') --}}
-
         </div>
     </div>
 </section>

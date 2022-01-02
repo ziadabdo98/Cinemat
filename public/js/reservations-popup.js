@@ -7,14 +7,29 @@ const total = document.getElementById("total-price");
 
 var ticketPrice;
 var seats;
-
+var seatsIndex;
+var selectedSeatsCount;
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+var SignedIn;
+var ShowId;
 
 // populate ui using ajax to get reservation
-function populateUI(id, date, price) {
+function populateUI(id, date, price, signedIn) {
     ticketPrice = price;
+    SignedIn = signedIn;
+    ShowId = id;
 
     // delete old seats
     SeatsContainer.innerHTML = "";
+    seatsIndex = [];
+    selectedSeatsCount = 0;
+    count.innerText = 0;
+    total.innerText = 0;
+    currentTab = 0;
+    showTab(currentTab);
+    if (SignedIn)
+        document.getElementsByClassName("tab")[1].style.display = "none";
 
     // populate price and date of show
     $('#show-date').text(date);
@@ -31,15 +46,12 @@ function populateUI(id, date, price) {
 function updateSelectedCount() {
     const selectedSeats = document.querySelectorAll(".row .seat.selected");
 
-    const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
-    console.log(seatsIndex);
+    seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
 
-    localStorage.setItem("selectedSeats", JSON.stringify(seatsIndex));
-
-    const selectedSeatsCount = selectedSeats.length;
+    selectedSeatsCount = selectedSeats.length;
 
     count.innerText = selectedSeatsCount;
-    total.innerText = selectedSeatsCount * ticketPrice;
+    total.innerText = (selectedSeatsCount * ticketPrice).toFixed(2);
 }
 
 function populateSeats(RoomSize, Reservations) {
@@ -74,3 +86,114 @@ container.addEventListener("click", (e) => {
         updateSelectedCount();
     }
 });
+
+
+
+function showTab(n) {
+    // This function will display the specified tab of the form ...
+    var x = document.getElementsByClassName("tab");
+    x[n].style.display = "block";
+    // ... and fix the Previous/Next buttons:
+    if (n == 0) {
+        document.getElementById("prevBtn").style.display = "none";
+    } else {
+        document.getElementById("prevBtn").style.display = "inline";
+    }
+    if (n == (x.length - 1)) {
+        if (SignedIn)
+            document.getElementById("nextBtn").innerHTML = "Reserve!";
+        else
+            document.getElementById("nextBtn").innerHTML = "Login/Register to reserve";
+    } else {
+        document.getElementById("nextBtn").innerHTML = "Next";
+    }
+}
+
+function nextPrev(n) {
+    // This function will figure out which tab to display
+    var x = document.getElementsByClassName("tab");
+    // Exit the function if any field in the current tab is invalid:
+    if (n == 1 && !validateForm()) return false;
+
+    if (n == 1 && (currentTab + n < x.length))
+        // Hide the current tab:
+        x[currentTab].style.display = "none";
+
+    // Increase or decrease the current tab by 1:
+    currentTab = currentTab + n;
+    // if you have reached the end of the form... :
+    if (currentTab >= x.length) {
+        //...the form gets submitted:
+        submit();
+        return false;
+    }
+    // Otherwise, display the correct tab:
+    showTab(currentTab);
+}
+
+function submit() {
+    if (SignedIn) {
+        formData = {};
+        $('#reservation-form').serializeArray().map(function (x) { formData[x.name] = x.value; });
+        console.log(formData);
+        $.ajax({
+            url: '/reservations',
+            type: "POST",
+            data: {
+                _token: formData['_token'],
+                card_num: formData['card-num'],
+                name: formData['name'],
+                exp: formData['exp'],
+                cvv: formData['cvv'],
+                selected_seats: seatsIndex,
+                show_id: ShowId
+            },
+            success: function (response) {
+                alert('Successfully reserved the tickets, reloading');
+                window.location.reload();
+            },
+            error: function (response) {
+                alert('An error happened, reloading');
+                window.location.reload();
+            }
+        });
+    } else {
+        window.location.href = '/login';
+    }
+}
+
+function validateForm() {
+    // This function deals with validation of the form fields
+    var tabs, valid = true;
+    tabs = document.getElementsByClassName("tab");
+    y = tabs[currentTab].getElementsByTagName("input");
+
+    // check validity of tab
+    if (currentTab === 0) {
+        // in seats tab
+        if (selectedSeatsCount === 0)
+            valid = false;
+    } else {
+        formData = {};
+        $('#reservation-form').serializeArray().map(function (x) { formData[x.name] = x.value; });
+        if (formData['card-num'] == "") {
+            $('#card-number-error').text('Card number can\'t be empty');
+            return false;
+        }
+        if (formData['name'] == "") {
+            $('#card-name-error').text('Card name can\'t be empty');
+            return false;
+        }
+        if (formData['exp'] == "") {
+            $('#exp-error').text('Expiry date can\'t be empty');
+            return false;
+        }
+        if (formData['cvv'] == "") {
+            $('#cvv-error').text('CVV can\'t be empty');
+            return false;
+        }
+        return true;
+    }
+
+    return valid; // return the valid status
+}

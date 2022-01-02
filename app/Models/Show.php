@@ -27,4 +27,9 @@ class Show extends Model
     {
         return $this->reservations->pluck('seat_number');
     }
+
+    public function movie()
+    {
+        return $this->belongsTo(Movie::class);
+    }
 }
