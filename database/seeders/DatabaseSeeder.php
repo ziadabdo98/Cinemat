@@ -25,9 +25,11 @@ class DatabaseSeeder extends Seeder
         $this->seedCategories();
         $this->seedRooms();
         User::factory(1)->create([
+            'first_name' => 'root',
             'username' => 'root',
             'email' => 'test@gmail.com',
             'password' => '2010',
+            'role_id' => Role::firstWhere('code', Role::ADMIN_CODE),
         ]);
         User::factory(50)->create();
         Movie::factory(50)->create();

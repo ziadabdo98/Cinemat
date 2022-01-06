@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SessionController;
@@ -64,10 +65,13 @@ Route::resource('reservations', ReservationController::class)->middleware('auth'
 // Dashboard
 Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 
+// Admin Panel
+Route::group(['prefix' => 'admin', 'middleware' => 'can:admin'], function () {
+    Route::resource('users', AdminUserController::class);
+    Route::get('manager-requests', [AdminUserController::class, 'managerRequests'])->name('users.manager-requests');
+    Route::get('dashboard', [AdminUserController::class, 'dashboard'])->name('admin.dashboard');
+});
+
 Route::get('/test', function () {
-    $wants_manager = false;
-    return redirect('/')->with([
-        'flash' => 'success',
-        'message' => $wants_manager ? 'Account created, you will remain customer until administration\'s approval.' : 'Your account has been successfully created!',
-    ]);
+    return view('admin-layout.layout');
 });
