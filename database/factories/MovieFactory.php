@@ -17,7 +17,7 @@ class MovieFactory extends Factory
         return [
             'category_id' => Category::all()->collect()->random(),
             'title' => $this->faker->word(),
-            'image' => asset('images/branding/posters/demo.jpg'),
+            'image' => 'posters/4fmjEYxHifJKuldE0vvgJgMJ74AoiZrOludTdSge.jpg',
             'storyline' => $this->faker->realTextBetween(200, 400),
             'rating' => $this->faker->randomFloat(null, 0, 5),
             'language' => strtoupper($this->faker->languageCode()),

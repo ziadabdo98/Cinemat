@@ -16,7 +16,9 @@
             <div class="col-md-12">
 
                 <div class="movie-poster">
-                    <img src="{{ $movie->image }}"
+                    {{-- <img src="{{ $movie->image }}" --}}
+                    <img src="{{ asset('storage/'.$movie->image) }}"
+                         style="height: 440px"
                          alt="">
                 </div>
 

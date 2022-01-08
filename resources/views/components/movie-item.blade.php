@@ -6,7 +6,7 @@
             <!-- Movie List Image -->
             <div class="listing-image">
                 <!-- Image -->
-                <img src="{{ $movie->image }}" alt="">
+                <img src="{{ asset('storage/'.$movie->image)  }}" alt="">
             </div>
 
             <!-- Movie List Content -->

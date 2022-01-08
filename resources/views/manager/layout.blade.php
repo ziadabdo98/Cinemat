@@ -87,16 +87,14 @@ $shows =
                     <span>Movies</span>
                 </a>
                 <div id="collapseMovie"
-                     class="collapse"
+                     class="collapse {{ Route::is('manager.movies.*')?'show':'' }}"
                      aria-labelledby="headingTwo"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item {{ Route::is('manager.movies.index')?'active':'' }}"
-                           href="{{ route('manager.movies.index') }}">View
-                            Movies</a>
+                        <a class="collapse-item {{ Route::is(['manager.movies.index','manager.movies.show','manager.movies.edit'])?'active':'' }}"
+                           href="{{ route('manager.movies.index') }}">View Movies</a>
                         <a class="collapse-item {{ Route::is('manager.movies.create')?'active':'' }}"
-                           href="{{ route('manager.movies.create') }}">Add
-                            Movie</a>
+                           href="{{ route('manager.movies.create') }}">Add Movie</a>
                     </div>
                 </div>
             </li>
@@ -123,7 +121,7 @@ $shows =
                      aria-labelledby="headingTwo"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item {{ Route::is(['manager.shows.index','manager.shows.edit'])?'active':'' }}"
+                        <a class="collapse-item {{ Route::is(['manager.shows.index','manager.shows.edit','manager.shows.show'])?'active':'' }}"
                            href="{{ route('manager.shows.index') }}">View
                             Shows</a>
                         <a class="collapse-item {{ Route::is('manager.shows.create')?'active':'' }}"

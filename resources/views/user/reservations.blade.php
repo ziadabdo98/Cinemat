@@ -15,10 +15,10 @@
         @foreach ($reservations as $reservation)
         <tr>
             <th>{{ $reservation->show->movie->title }}</th>
-            <th>{{ $reservation->show->date_time->toDayDateTimeString() }}</th>
+            <th>{{ $reservation->show->date->toDayDateTimeString() }}</th>
             <td>{{ $reservation->seat_number }}</td>
             <td>{{ $reservation->show->price." ".config('app.currency') }}</td>
-            @if ($reservation->show->date_time > Carbon\Carbon::now()->add(3,'hour'))
+            @if ($reservation->show->date > Carbon\Carbon::now()->add(3,'hour'))
             <td class="disabled">
                 <form action="{{ route('reservations.destroy',$reservation->id) }}" method="POST">
                     @csrf

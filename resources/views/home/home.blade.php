@@ -87,7 +87,7 @@
     <!-- End of Latest Releases Slider -->
 
     <div class="text-center pt-3">
-        <a class="btn btn-main btn-effect" href="/movie/index">See All Movies</a>
+        <a class="btn btn-main btn-effect" href="#">See All Movies</a>
     </div>
 </section>
 <!-- =============== END OF LATEST RELEASES SECTION =============== -->
@@ -108,7 +108,7 @@
 
                 @auth
                 <p>Start reserving your tickets to enjoy the latest and greatest movies!</p>
-                <a class="btn btn-main btn-effect" href="/movie/index">Shows</a>
+                <a class="btn btn-main btn-effect" href="#">Shows</a>
                 @endauth
             </div>
         </div>

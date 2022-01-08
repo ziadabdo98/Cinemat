@@ -19,18 +19,23 @@
     @foreach ($shows as $show)
     <tr>
         <th>{{ $show->id }}</th>
-        <th>{{ $show->movie->title }}</th>
+        <th><a href="{{ route('manager.shows.show',$show->id) }}">{{ $show->movie->title }}</a>
+        </th>
         <td>{{ $show->date }}</td>
         <td>{{ $show->start_time }}</td>
         <td>{{ $show->end_time }}</td>
-        <td class="">
-            <a href="{{ route('manager.shows.edit',$show->id) }}" class="btn btn-warning text-white">Edit</a>
+        <td>
+            <a href="{{ route('manager.shows.edit',$show->id) }}"
+               class="btn btn-warning text-white">Edit</a>
         </td>
-        <td class="">
-            <form action="{{ route('manager.shows.destroy',$show->id) }}" method="POST">
+        <td>
+            <form action="{{ route('manager.shows.destroy',$show->id) }}"
+                  method="POST">
                 @csrf
                 @method('DELETE')
-                <input class="btn btn-danger text-white" type="submit" value="Delete">
+                <input class="btn btn-danger text-white"
+                       type="submit"
+                       value="Delete">
             </form>
         </td>
     </tr>

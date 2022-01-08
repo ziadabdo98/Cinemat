@@ -44,4 +44,19 @@ class Show extends Model
     {
         return $this->belongsTo(Movie::class);
     }
+
+    protected static $relations_to_cascade = ['reservations'];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($resource) {
+            foreach (static::$relations_to_cascade as $relation) {
+                foreach ($resource->{$relation}()->get() as $item) {
+                    $item->delete();
+                }
+            }
+        });
+    }
 }

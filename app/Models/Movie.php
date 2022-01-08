@@ -9,6 +9,12 @@ class Movie extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'category_id', 'title', 'image', 'storyline',
+        'rating', 'language', 'release_date', 'director',
+        'maturity_rating', 'running_time',
+    ];
+
     protected $casts = [
         'release_date' => 'date',
         'running_time' => 'datetime',
@@ -22,5 +28,20 @@ class Movie extends Model
     public function shows()
     {
         return $this->hasMany(Show::class);
+    }
+
+    protected static $relations_to_cascade = ['shows'];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($resource) {
+            foreach (static::$relations_to_cascade as $relation) {
+                foreach ($resource->{$relation}()->get() as $item) {
+                    $item->delete();
+                }
+            }
+        });
     }
 }

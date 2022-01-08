@@ -24,7 +24,7 @@
                 </div>
 
                 <!-- Image -->
-                <img src={{ asset('images/branding/posters/demo.jpg')  }} alt="">
+                <img src={{ asset('storage/'.$movie->image)  }} alt="">
             </div>
 
             <!-- Movie List Content -->

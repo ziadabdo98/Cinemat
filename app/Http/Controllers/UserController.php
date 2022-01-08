@@ -53,7 +53,7 @@ class UserController extends Controller
         $user = User::with(['reservations.show.movie'])->find(auth()->id());
         return view('user.user-dashboard', [
             'user' => $user,
-            'reservations' => $user->reservations->where('show.date_time', '>', Carbon::now()),
+            'reservations' => $user->reservations->where('show.date', '>', Carbon::now()),
         ]);
     }
 }

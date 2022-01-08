@@ -4,7 +4,7 @@
 
         <!-- Start of Poster -->
         <div class="poster">
-            <img src="{{ $movie->image }}" alt="">
+            <img src="{{ asset('storage/'.$movie->image)  }}" alt="">
         </div>
         <!-- End of Poster -->
 

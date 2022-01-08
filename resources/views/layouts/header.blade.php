@@ -38,17 +38,17 @@
 
                     <!-- Menu Item -->
                     <li class="nav-item">
-                        <a class="nav-link" href="contact-us.html">Movies</a>
+                        <a class="nav-link" href="#">Movies</a>
                     </li>
 
                     <!-- Menu Item -->
                     <li class="nav-item">
-                        <a class="nav-link" href="contact-us.html">What to Watch?</a>
+                        <a class="nav-link" href="#">What to Watch?</a>
                     </li>
 
                     <!-- Menu Item -->
                     <li class="nav-item">
-                        <a class="nav-link" href="contact-us.html">Contact us</a>
+                        <a class="nav-link" href="#">Contact us</a>
                     </li>
 
                 </ul>

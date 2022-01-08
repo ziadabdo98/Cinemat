@@ -74,7 +74,9 @@ class ManagerShowController extends Controller
      */
     public function show(Show $show)
     {
-        //
+        return view('manager.show-show', [
+            'show' => $show,
+        ]);
     }
 
     /**
