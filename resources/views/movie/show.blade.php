@@ -2,7 +2,8 @@
 
 @section('content')
 <!-- =============== START OF MOVIE DETAIL INTRO =============== -->
-<section class="movie-detail-intro overlay-gradient ptb100" style="background: url({{ asset('images/branding/posters/movie-detail-bg.jpg') }});">
+<section class="movie-detail-intro overlay-gradient ptb100"
+         style="background: url({{ asset('images/branding/posters/movie-detail-bg.jpg') }});">
 </section>
 <!-- =============== END OF MOVIE DETAIL INTRO =============== -->
 
@@ -15,7 +16,8 @@
             <div class="col-md-12">
 
                 <div class="movie-poster">
-                    <img src="{{ $movie->image }}" alt="">
+                    <img src="{{ $movie->image }}"
+                         alt="">
                 </div>
 
 
@@ -24,13 +26,16 @@
 
                     <ul class="movie-subtext">
                         <li>{{ $movie->maturity_rating }}</li>
-                        <li>{{ $movie->running_time->format('G \h i\m\i\n') }}</li>
+                        <li>{{ $movie->running_time->format('G \h i\m\i\n') }}
+                        </li>
                         <li>{{ $movie->category->title }}</li>
                         <li>{{ $movie->release_date->format('d M Y') }}</li>
                     </ul>
 
-                    <a href="#reserve-now" class="btn btn-main btn-effect">Get ticket</a>
-                    <a href="#" class="btn rate-movie"><i class="icon-heart"></i></a>
+                    <a href="#reserve-now"
+                       class="btn btn-main btn-effect">Get tickets</a>
+                    <a href="#"
+                       class="btn rate-movie"><i class="icon-heart"></i></a>
 
                     <div class="rating mt10">
                         @include('components.rating-stars',['rating'=>$movie->rating])
@@ -65,31 +70,45 @@
 
                     <!-- Shows -->
                     <div class="movie-media mt50">
-                        <h3 id="reserve-now" class="title">Reserve your ticket!</h3>
-
+                        <h3 id="reserve-now"
+                            class="title">Reserve your ticket!</h3>
+                        {{-- {{ ddd($shows->first()->date) }} --}}
                         @if ($shows->isNotEmpty())
-                        <table class="showtime-table table table-striped table-hover">
+                        <table
+                               class="showtime-table table table-striped table-hover">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">Show times</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Start time</th>
+                                    <th scope="col">End time</th>
                                     <th scope="col">Ticket price</th>
                                     <th scope="col">Remaining seats</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             @foreach ($shows as $show)
-                            <tr class="{{ ($show->remaining_seats < 5)? "table-danger":"" }}">
-                                <th>{{ $show->date_time->toDayDateTimeString() }}</th>
-                                <td>{{ $show->price." ".config('app.currency') }}</td>
-                                <td>{{ $show->remaining_seats.'/'.$show->room->size }}</td>
-                                <td><a href="#reservation-popup" class="btn btn-second btn-effect open-reservation-popup" onclick="populateUI({{ $show->id.',\''.$show->date_time->toDayDateTimeString().'\','.$show->price.','.(auth()->check()?'true':'false') }})">Reserve</a></td>
+                            <tr
+                                class="{{ ($show->remaining_seats < 5)? "table-danger":"" }}">
+                                <th>{{ $show->date->toDateString() }}</th>
+                                <th>{{ $show->start_time->toTimeString() }}</th>
+                                <th>{{ $show->end_time->toTimeString() }}</th>
+                                <td>{{ $show->price." ".config('app.currency') }}
+                                </td>
+                                <td>{{ $show->remaining_seats.'/'.$show->room->size }}
+                                </td>
+                                <td><a href="#reservation-popup"
+                                       class="btn btn-second btn-effect open-reservation-popup"
+                                       onclick="populateUI({{ $show->id.',\''.$show->date.'\','.$show->price.','.(auth()->check()?'true':'false') }})">Reserve</a>
+                                </td>
                             </tr>
                             @endforeach
                         </table>
                         @include('components.reservation-modal')
                         @else
-                        <div class="bg-light p-3 font-weight-bold rounded text-center">
-                            There are current no shows for this movie, check back later!
+                        <div
+                             class="bg-light p-3 font-weight-bold rounded text-center">
+                            There are current no shows for this movie, check
+                            back later!
                         </div>
                         @endif
                     </div>
@@ -108,11 +127,18 @@
                         <h3 class="title">Details</h3>
 
                         <ul>
-                            <li><strong>Release date: </strong>{{ $movie->release_date->toFormattedDateString() }}</li>
-                            <li><strong>Director: </strong>{{ $movie->director }}</li>
-                            <li><strong>Language: </strong>{{ $movie->language }}</li>
-                            <li><strong>Maturity rating: </strong>{{ $movie->maturity_rating }}</li>
-                            <li><strong>Running time: </strong>{{ $movie->running_time->format('G \h i\m\i\n') }}</li>
+                            <li><strong>Release date:
+                                </strong>{{ $movie->release_date->toFormattedDateString() }}
+                            </li>
+                            <li><strong>Director:
+                                </strong>{{ $movie->director }}</li>
+                            <li><strong>Language:
+                                </strong>{{ $movie->language }}</li>
+                            <li><strong>Maturity rating:
+                                </strong>{{ $movie->maturity_rating }}</li>
+                            <li><strong>Running time:
+                                </strong>{{ $movie->running_time->format('G \h i\m\i\n') }}
+                            </li>
                         </ul>
                     </aside>
                     <!-- End of Details Widget -->

@@ -18,7 +18,9 @@ class CreateShowsTable extends Migration
             $table->foreignIdFor(\App\Models\Movie::class);
             $table->foreignIdFor(\App\Models\Room::class);
             $table->float('price');
-            $table->dateTime('date_time');
+            $table->date('date');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->integer('remaining_seats');
             $table->timestamps();
         });

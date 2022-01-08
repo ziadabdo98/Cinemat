@@ -27,7 +27,7 @@ class UserMovieController extends Controller
     {
         return view('movie.show', [
             'movie' => $movie,
-            'shows' => $movie->shows->where('date_time', '>', Carbon::now())->whereNotIn('remaining_seats', 0),
+            'shows' => $movie->shows->where('date', '>', Carbon::now())->whereNotIn('remaining_seats', 0),
             'recommendations' => Movie::where('category_id', $movie->category_id)->where('id', '!=', $movie->id)->get()->collect(),
         ]);
     }

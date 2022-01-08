@@ -19,7 +19,10 @@ class ShowFactory extends Factory
             'movie_id' => Movie::all()->collect()->random(),
             'room_id' => Room::all()->collect()->random(),
             'price' => $this->faker->randomFloat(2, 50, 500),
-            'date_time' => $this->faker->dateTimeBetween('-1 week', '+1 week'),
+            'date' => $this->faker->dateTimeBetween('-1 week', '+1 week'),
+            'start_time' => $this->faker->dateTimeBetween('-3 hours', 'now'),
+            'end_time' => $this->faker->dateTimeBetween('now', '+3 hours'),
+            // 'end_time' => $this->faker->time(),
             'remaining_seats' => function (array $attr) {return Room::find($attr['room_id'])->size;},
         ];
     }

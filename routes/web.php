@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\ManagerMovieController;
+use App\Http\Controllers\ManagerShowController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
@@ -70,6 +72,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'can:admin'], function () {
     Route::resource('users', AdminUserController::class);
     Route::get('manager-requests', [AdminUserController::class, 'managerRequests'])->name('users.manager-requests');
     Route::get('dashboard', [AdminUserController::class, 'dashboard'])->name('admin.dashboard');
+});
+
+// Manager Movie
+Route::group(['prefix' => 'manager', 'middleware' => 'can:manager', 'as' => 'manager.'], function () {
+    Route::resource('movies', ManagerMovieController::class);
+    Route::get('dashboard', [ManagerMovieController::class, 'dashboard'])->name('dashboard');
+});
+
+// Manager Shows
+Route::group(['prefix' => 'manager', 'middleware' => 'can:manager', 'as' => 'manager.'], function () {
+    Route::resource('shows', ManagerShowController::class);
 });
 
 Route::get('/test', function () {

@@ -9,8 +9,20 @@ class Show extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'movie_id',
+        'room_id',
+        'price',
+        'date',
+        'start_time',
+        'end_time',
+        'remaining_seats',
+    ];
+
     protected $casts = [
-        'date_time' => 'datetime',
+        'date' => 'date',
+        'start_time' => 'datetime',
+        'end_time' => 'datetime',
     ];
 
     public function room()
