@@ -127,7 +127,7 @@ class DatabaseSeeder extends Seeder
             //7 The Matrix
             [
                 'category_id' => 1,
-                'title' => 'The Matri0x',
+                'title' => 'The Matrix',
                 'image' => 'posters/The_Matrix.jpg',
                 'storyline' => 'When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.',
                 'rating' => 4.35,
