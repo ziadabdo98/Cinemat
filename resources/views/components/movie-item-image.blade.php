@@ -4,13 +4,13 @@
 
         <!-- Start of Poster -->
         <div class="poster">
-            <img src="{{ asset('storage/'.$movie->image)  }}" alt="">
+            <img src="{{ asset('storage/' . $movie->image) }}" alt="">
         </div>
         <!-- End of Poster -->
 
         <!-- Start of Buttons -->
         <div class="buttons">
-            <a href="{{ route('movies.show',$movie->id) }}" class="play-video">
+            <a href="{{ route('movies.show', $movie->id) }}" class="play-video">
                 <i class="fa fa-ticket"></i>
             </a>
         </div>
@@ -19,7 +19,7 @@
         <!-- Start of Movie Details -->
         <div class="movie-details">
             <h4 class="movie-title">
-                <a href="movie-detail.html">{{ $movie->title }}</a>
+                <a href="{{ route('movies.show', $movie->id) }}">{{ $movie->title }}</a>
             </h4>
             <span class="released">{{ $movie->release_date->toFormattedDateString() }}</span>
         </div>
@@ -28,9 +28,9 @@
         <!-- Start of Rating -->
         <div class="stars">
             <div class="rating">
-                @include('components.rating-stars',['rating'=>$movie->rating])
+                @include('components.rating-stars', ['rating' => $movie->rating])
             </div>
-            <span>{{ number_format($movie->rating,1) }}/5</span>
+            <span>{{ number_format($movie->rating, 1) }}/5</span>
         </div>
         <!-- End of Rating -->
 
