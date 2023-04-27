@@ -38,8 +38,7 @@
         }">
 
             <!-- Start of Filters -->
-            <div class="d-flex mb50 align-items-center justify-content-between"
-                x-bind:class="{ 'mb100': layout === 'list' }">
+            <div class="d-flex mb50 align-items-center justify-content-between">
 
 
                 <form method="GET" action="{{ route('movies.index') }}" class="d-flex">
@@ -110,18 +109,21 @@
             <!-- End of Filters -->
 
 
+            @if ($movies->isEmpty())
+                <p class="bg-light font-weight-bold h4 p-5 rounded text-center">No movies found!</p>
+            @else
+                <!-- Start of Movie Grid -->
+                <div class="row" x-show="layout === 'grid'" x-transition>
+                    @each('components.movie-grid-item', $movies, 'movie')
+                </div>
+                <!-- End of Movie Grid -->
 
-            <!-- Start of Movie Grid -->
-            <div class="row" x-show="layout === 'grid'" x-transition>
-                @each('components.movie-grid-item', $movies, 'movie')
-            </div>
-            <!-- End of Movie Grid -->
-
-            <!-- Start of Movie List -->
-            <div class="row" x-show="layout === 'list'" x-transition>
-                @each('components.movie-list-item', $movies, 'movie')
-            </div>
-            <!-- End of Movie List -->
+                <!-- Start of Movie List -->
+                <div class="row mt100" x-show="layout === 'list'" x-transition>
+                    @each('components.movie-list-item', $movies, 'movie')
+                </div>
+                <!-- End of Movie List -->
+            @endif
 
 
             <!-- Start of Pagination -->
