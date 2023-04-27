@@ -28,11 +28,11 @@
                         style="z-index: 5; color: #fff; font-weight: 900;">
 
                         <!-- ===== START OF SEARCH FORM ===== -->
-                        <form id="search-form-1">
+                        <form id="search-form-1" method="GET" action="{{ route('movies.index') }}">
                             <div class="row justify-content-center">
                                 <div class="col-md-8 col-sm-10 col-12">
                                     <div class="form-group">
-                                        <input name="search-keyword" type="text" id="search-keyword" value=""
+                                        <input name="search" type="text" id="search" value=""
                                             class="form-control" placeholder="Enter Movies or Series Title">
                                         <button type="submit" class="btn btn-main btn-effect"><i
                                                 class="fa fa-search"></i></button>
