@@ -32,10 +32,16 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+Route::get('/contact', function () {
+    return view('pages.contact-us');
+})->name('contact-us');
+
 // Login/Register routes
 Route::middleware('guest')->group(function () {
     Route::post('login', [SessionController::class, 'store']);
-    Route::get('login', function () {return view('auth.login');})->name('login');
+    Route::get('login', function () {
+        return view('auth.login');
+    })->name('login');
 
     Route::post('register', [UserController::class, 'store'])->name('register');
     Route::get('register', function () {
@@ -83,8 +89,4 @@ Route::group(['prefix' => 'manager', 'middleware' => 'can:manager', 'as' => 'man
 // Manager Shows
 Route::group(['prefix' => 'manager', 'middleware' => 'can:manager', 'as' => 'manager.'], function () {
     Route::resource('shows', ManagerShowController::class);
-});
-
-Route::get('/test', function () {
-    return view('admin-layout.layout');
 });
