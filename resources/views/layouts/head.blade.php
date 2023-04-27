@@ -8,10 +8,10 @@
     <!-- ===== Meta Tags - Description for Search Engine purposes ===== -->
     <meta name="description" content="Cinemat - Ticket reservation">
     <meta name="keywords" content="movies, cinema, reservation, tickets">
-    <meta name="author" content="Zoz">
+    <meta name="author" content="zoz">
 
     <!-- ===== Website Title ===== -->
-    <title>{{config('app.name')}}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- ===== Favicon ===== -->
     <link rel="shortcut icon" href={{ asset('images/branding/logos/favicon.png') }} type="image/x-icon">
@@ -30,4 +30,6 @@
 
     <link rel="stylesheet" type="text/css" href={{ asset('css/style.css') }}>
     <link rel="stylesheet" type="text/css" href={{ asset('css/responsive.css') }}>
+
+    @stack('head')
 </head>

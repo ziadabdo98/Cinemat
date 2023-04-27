@@ -14,7 +14,13 @@ class UserMovieController extends Controller
      */
     public function index()
     {
-        //
+        $movies = Movie::query()->with('category');
+
+        $movies->filter(request()->all());
+
+        return view('movie.index', [
+            'movies' => $movies->paginate(6)->withQueryString(),
+        ]);
     }
 
     /**
@@ -31,5 +37,4 @@ class UserMovieController extends Controller
             'recommendations' => Movie::where('category_id', $movie->category_id)->where('id', '!=', $movie->id)->get()->collect(),
         ]);
     }
-
 }
