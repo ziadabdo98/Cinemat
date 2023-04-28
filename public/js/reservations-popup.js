@@ -179,19 +179,19 @@ function validateForm() {
         if (formData['card-num'] == "") {
             $('#card-number-error').text('Card number can\'t be empty');
             return false;
-        }
+        } else $('#card-number-error').text('');
         if (formData['name'] == "") {
             $('#card-name-error').text('Card name can\'t be empty');
             return false;
-        }
+        } else $('#card-name-error').text('');
         if (formData['exp'] == "") {
             $('#exp-error').text('Expiry date can\'t be empty');
             return false;
-        }
+        } else $('#exp-error').text('');
         if (formData['cvv'] == "") {
             $('#cvv-error').text('CVV can\'t be empty');
             return false;
-        }
+        } else $('#cvv-error').text('');
         return true;
     }
 
