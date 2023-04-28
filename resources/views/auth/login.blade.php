@@ -6,7 +6,7 @@
     <!-- =============== START OF WRAPPER =============== -->
     <div class="wrapper">
         <main class="login-register-page"
-              style="background-image: url({{  asset('images/branding/posters/movie-collection.jpg')  }})">
+            style="background-image: url({{ asset('images/branding/posters/movie-collection.jpg') }})">
             <div class="container">
 
                 <!-- =============== START OF LOGIN & REGISTER POPUP =============== -->
@@ -28,13 +28,13 @@
                                 <div class="form-group">
                                     <label for="email">Email*</label>
                                     <input type="text" class="form-control" id="email" name="email"
-                                           placeholder="Your Email *" required />
+                                        placeholder="Your Email *" required />
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password">Password*</label>
                                     <input type="password" class="form-control" id="password" name="password"
-                                           placeholder="Your Password *" required />
+                                        placeholder="Your Password *" required />
                                 </div>
 
                                 <div class="form-group">
@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
 
-                                @include('components.error-message',['field_name' => 'email'])
+                                @include('components.error-message', ['field_name' => 'email'])
                                 <div class="form-group">
                                     <input type="submit" value="Sign in" class="btn btn-main btn-effect nomargin" />
                                 </div>
@@ -56,8 +56,6 @@
                                     Not a member?
                                     <a href="{{ route('register') }}">Sign up</a>
                                 </span>
-                                {{--                            <a class="forgetPasswordClick pull-right">Forgot Password</a>--}}
-                                {{--                            TODO: implement forgot password--}}
                             </div>
                         </div>
 
@@ -82,12 +80,12 @@
                                 <div class="form-group">
                                     <label for="password">Email Address *</label>
                                     <input type="email" name="user_login" class="form-control" id="email3"
-                                           placeholder="Email Address *" />
+                                        placeholder="Email Address *" />
                                 </div>
 
                                 <div class="form-group">
                                     <input type="submit" name="submit" value="Get New Password"
-                                           class="btn btn-main btn-effect nomargin" />
+                                        class="btn btn-main btn-effect nomargin" />
                                 </div>
                             </form>
                             <!-- End of Forger Password form -->
@@ -104,7 +102,7 @@
                 </div>
                 <!-- =============== END OF LOGIN & REGISTER POPUP =============== -->
 
-                <a href={{  route('home')  }} class="text-white">Back to Home</a>
+                <a href={{ route('home') }} class="text-white">Back to Home</a>
             </div>
         </main>
     </div>
