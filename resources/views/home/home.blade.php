@@ -7,7 +7,15 @@
     <section class="top-movies2">
         <div class="container">
             <div class="row">
-                @each('components.movie-item-dark', $top4movies, 'movie')
+                @php
+                    $containerClasses = ['col-sm-6 col-xs-12', 'col-sm-6 d-none d-sm-block', 'd-none d-lg-block', 'd-none d-lg-block'];
+                @endphp
+                @foreach ($top4movies as $movie)
+                    @include('components.movie-item-dark', [
+                        'movie' => $movie,
+                        'containerClass' => $containerClasses[$loop->index],
+                    ])
+                @endforeach
             </div>
         </div>
     </section>
@@ -79,12 +87,7 @@
 
         <!-- Start of Latest Releases Slider -->
         <div class="owl-carousel latest-releases-slider">
-
             @each('components.movie-item', $newest_movies, 'movie')
-            {{-- <div class="item">
-            @include('components.movie-item')
-        </div> --}}
-
         </div>
         <!-- End of Latest Releases Slider -->
 

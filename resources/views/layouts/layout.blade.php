@@ -3,14 +3,17 @@
 <html lang="en">
 
 @include('layouts.head')
+
 <body>
-    @include('layouts.header')
+    <div class="wrapper">
+        @include('layouts.header')
 
-    @yield('content')
+        @yield('content')
 
-    @include('layouts.footer')
+        @include('layouts.footer')
 
-    @include('layouts.includes')
+        @include('layouts.includes')
+    </div>
 
 </body>
 

@@ -19,7 +19,13 @@
             </a>
 
             <!-- Login Button on Responsive -->
-            <a href="{{ route('login') }}" class="login-mobile-btn popup-with-zoom-anim"><i class="icon-user"></i></a>
+            <a href="{{ route('login') }}" class="login-mobile-btn border px-2 py-1"
+                style="border-radius: 0.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 35%;">
+                <i class="icon-user"></i>
+                @auth
+                    {{ auth()->user()->first_name }}
+                @endauth
+            </a>
 
             <button id="mobile-nav-toggler" class="hamburger hamburger--collapse" type="button">
                 <span class="hamburger-box">

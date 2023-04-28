@@ -378,6 +378,7 @@ Author URI: gnodesign.com
 	****************/
     .movie-detail-intro2 .movie-poster,
     .movie-detail-intro2 .movie-poster img{
+        height: unset !important;
         width: 100%;
     }
     /**************** 
