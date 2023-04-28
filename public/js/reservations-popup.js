@@ -115,7 +115,7 @@ function nextPrev(n) {
     // Exit the function if any field in the current tab is invalid:
     if (n == 1 && !validateForm()) return false;
 
-    if (n == 1 && (currentTab + n < x.length))
+    if ((currentTab + n < x.length))
         // Hide the current tab:
         x[currentTab].style.display = "none";
 
