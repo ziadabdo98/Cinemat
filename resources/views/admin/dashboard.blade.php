@@ -72,7 +72,7 @@
 
     <div class="row">
 
-        <!-- Area Chart -->
+        <!-- Bar Chart -->
         <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -139,7 +139,9 @@
             data: {
                 labels: ["Admin", "Manager", "Customer"],
                 datasets: [{
-                    data: [@js($adminUsers), @js($managerUsers), @js($customerUsers)],
+                    data: [@json($adminUsers), @json($managerUsers),
+                        @json($customerUsers)
+                    ],
                     backgroundColor: ['#9352b3', '#1cc88a', '#36b9cc'],
                     hoverBackgroundColor: ['#703e88', '#17a673', '#2c9faf'],
                     hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -174,7 +176,9 @@
                     backgroundColor: "#4e73df",
                     hoverBackgroundColor: "#2e59d9",
                     borderColor: "#4e73df",
-                    data: [@js($managerUsers), @js($customerUsers), @js($managerRequests)],
+                    data: [@json($managerUsers), @json($customerUsers),
+                        @json($managerRequests)
+                    ],
                 }],
             },
             options: {
