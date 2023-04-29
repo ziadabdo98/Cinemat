@@ -74,7 +74,12 @@ You can find a link to the website **[here](https://cinemat.zeiadmohamed.dev)**.
     ```bash
     php artisan db:seed
     ```
-9. Finally, you can start the local development server:
+9. Create a symbolic link from public/storage to storage/app/public by:
+    ```bash
+    php artisan storage:link
+    ```
+    The Laravel application will be accessible at the specified URL (usually http://localhost:8000).
+10. Finally, you can start the local development server:
     ```bash
     php artisan serve
     ```
