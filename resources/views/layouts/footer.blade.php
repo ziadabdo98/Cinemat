@@ -132,7 +132,7 @@
                             </ul>
                         </div>
 
-                        <div class="copyright ml-auto">Made with ❤️ by team #8</div>
+                        <div class="copyright ml-auto">Made with ❤️ by Zeiad</div>
 
                     </div>
                 </div>
