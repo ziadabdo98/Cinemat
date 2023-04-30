@@ -3,7 +3,7 @@
 @section('content')
     <!-- =============== START OF MOVIE DETAIL INTRO =============== -->
     <section class="movie-detail-intro overlay-gradient ptb100"
-        style="background: url({{ asset('images/branding/posters/movie-detail-bg.jpg') }});">
+        style="background: url({{ asset('images/branding/posters/movie-detail-bg.webp') }});">
     </section>
     <!-- =============== END OF MOVIE DETAIL INTRO =============== -->
 
