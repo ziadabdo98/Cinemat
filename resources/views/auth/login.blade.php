@@ -6,7 +6,7 @@
     <!-- =============== START OF WRAPPER =============== -->
     <div class="wrapper">
         <main class="login-register-page"
-            style="background-image: url({{ asset('images/branding/posters/movie-collection.jpg') }})">
+            style="background-image: url({{ asset('images/branding/posters/movie-collection.webp') }})">
             <div class="container">
 
                 <!-- =============== START OF LOGIN & REGISTER POPUP =============== -->

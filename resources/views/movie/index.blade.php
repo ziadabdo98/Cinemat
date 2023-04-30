@@ -6,7 +6,7 @@
 
 @section('content')
     <section class="page-header overlay-gradient"
-        style="background: url({{ asset('images/branding/posters/movie-collection.jpg') }});">
+        style="background: url({{ asset('images/branding/posters/movie-collection.webp') }});">
         <div class="container">
             <div class="inner">
                 <h2 class="title">Movies</h2>
