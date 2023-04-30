@@ -50,7 +50,7 @@
                         <ul class="blog-posts">
                             @foreach ($newestMovies as $movie)
                                 <li><a
-                                        href="#">{{ $movie->title }}</a><small>{{ $movie->release_date->format('d M Y') }}</small>
+                                        href="{{ route('movies.show', $movie->id) }}">{{ $movie->title }}</a><small>{{ $movie->release_date->format('d M Y') }}</small>
                                 </li>
                             @endforeach
                         </ul>
@@ -132,7 +132,7 @@
                             </ul>
                         </div>
 
-                        <div class="copyright ml-auto">Made with ❤️ by Zeiad</div>
+                        <div class="copyright ml-auto">Made with ❤️</div>
 
                     </div>
                 </div>
