@@ -63,7 +63,7 @@ Route::resource('movies', UserMovieController::class, ['only' => [
 // User Shows
 Route::get('json/shows/{show}', function (Show $show) {
     $ret = $show->load('room')->toArray();
-    $ret['reservations'] = $show->reservationsSeats();
+    $ret['reservations'] = $show->reservationsSeats()->map(fn ($i) => intval($i));
     return $ret;
 });
 
