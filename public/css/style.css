@@ -4442,6 +4442,7 @@ ul.blog-posts-widget .blog-content .blog-text span {
 
 .movie-box-1 .poster img {
     width: 100%;
+    aspect-ratio: 25/37;
 }
 
 
