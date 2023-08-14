@@ -2,7 +2,7 @@
 
 # About Project
 
-Cinemat is a ticket reservation system developed using Laravel 8. It features like user roles, authentication, automated reservations and many more.
+Cinemat is a ticket reservation system developed using Laravel 8. It has features like user roles, authentication, automated reservations, and much more.
 See the live demo **[here](https://cinemat.zeiadmohamed.dev)**.
 
 ## What I learned
@@ -23,9 +23,9 @@ See the live demo **[here](https://cinemat.zeiadmohamed.dev)**.
 
 ## Usage
 
-You can find a link to the website **[here](https://cinemat.zeiadmohamed.dev)**. The website has some movies already created, but you can login as a manager and edit or create new movies. **[login](https://cinemat.zeiadmohamed.dev/login)**
+You can find a link to the website **[here](https://cinemat.zeiadmohamed.dev)**. The website has some movies already created, but you can log in as a manager and edit or create new movies. **[login](https://cinemat.zeiadmohamed.dev/login)**
 
-> Note: The website resets automatically each 30 minutes.
+> Note: The website resets automatically every 30 minutes.
 
 ### Credentials
 
@@ -57,7 +57,7 @@ You can find a link to the website **[here](https://cinemat.zeiadmohamed.dev)**.
     ```bash
     composer install
     ```
-4. Create a copy of the .env.example file, name it .env and enter database credentials:
+4. Create a copy of the .env.example file, name it .env, and enter database credentials:
     ```bash
     cp .env.example .env
     ```
